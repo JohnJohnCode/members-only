@@ -18,9 +18,6 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-// Trust the 'X-Forwarded-For' header when the app is behind a proxy or load balancer.
-app.set('trust proxy', true);
-
 // Set up rate limiter: maximum of 25 requests per minute
 const limiter = RateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
