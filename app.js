@@ -1,7 +1,6 @@
 var dotenv = require("dotenv");
 dotenv.config();
 var createError = require('http-errors');
-var RateLimit = require("express-rate-limit");
 var express = require('express');
 var session = require("express-session");
 var path = require('path');
@@ -13,6 +12,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var bcrypt = require("bcryptjs");
 var User = require("./models/user");
+var RateLimit = require("express-rate-limit");
 
 var indexRouter = require('./routes/index');
 
