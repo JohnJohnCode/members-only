@@ -1,0 +1,27 @@
+extends layout
+
+block header
+  div(class='navbar flex-column mb-5')
+    span(class='h1 mt-3') Members Only
+    nav(class="navbar-expand-md")
+      div(class="navbar-nav flex-row")
+        a(class="nav-link mr-1" href="/") Home
+        a(class="nav-link ml-1 mr-1" style="color: white;" href="/sign-up") Sign Up
+        if currentUser
+          a(class="nav-link ml-1 mr-1" href="/log-out") Log Out
+        else
+          a(class="nav-link ml-1 mr-1" href="/log-in") Log In
+        a(class="nav-link ml-1" href="/membership") Membership
+
+block content
+  form#form(class="card flex-column align-items-center w-100 py-4 px-3 mb-4 shadow-sm" style="max-width: 300px" method='POST' action='')
+    input(class='mb-3 w-100 py-1' placeholder='Username' type="text" name="username" required="true" value=(undefined === user ? "" : user.username))
+    input(class='mb-3 w-100 py-1' placeholder='Password' type="password" name="password" required="true")
+    input(class='mb-3 w-100 py-1' placeholder='Confirm password' type="password" name="confirmPassword" required="true")
+    button#btn(class="w-100 py-2 text-light" type="submit") Sign Up
+
+block error
+  if errors
+    ul(style="list-style-type: none; padding: 0;")
+      for error in errors
+        li!= error.msg

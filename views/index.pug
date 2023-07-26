@@ -1,0 +1,35 @@
+extends layout
+
+block header
+  div(class='navbar flex-column mb-4')
+    span(class='h1 mt-3') Members Only
+    nav(class="navbar-expand-md")
+      div(class="navbar-nav flex-row")
+        a(class="nav-link mr-1" style="color: white;" href="/") Home
+        a(class="nav-link ml-1 mr-1" href="/sign-up") Sign Up
+        if currentUser
+          a(class="nav-link ml-1 mr-1" href="/log-out") Log Out
+        else
+          a(class="nav-link ml-1 mr-1" href="/log-in") Log In
+        a(class="nav-link ml-1" href="/membership") Membership
+
+block content
+  div(class='w-100 d-flex flex-column align-items-center justify-content-center')
+    if currentUser
+      a(class='mb-5' href='/new') Create a new message
+    each message in messages
+      div#form(class="card flex-column align-items-center w-100 py-4 px-3 mb-4 shadow-sm" style="max-width: 400px")
+        div(class="w-100 card-header d-flex flex-column align-items-end justify-content-between")
+          span= message.date
+          if currentUser
+            if currentUser.member === true
+              span(class="mt-1")= message.author.username
+        div(class="card-body w-100")
+          span= message.text
+        if currentUser
+          if currentUser.admin === true
+            form(class="card-body w-100 p-0" method="POST")
+              input(class="d-none" name="messageid" value=(message._id))
+              button#btn(class="w-100 py-2 text-light" type="submit") Delete
+    
+

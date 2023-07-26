@@ -1,0 +1,31 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #929292;
+}
+
+a:hover {
+  color: rgb(0, 140, 255);
+}
+
+#form {
+  background-color: #262626;
+  border: 1px solid #006eff;
+}
+
+#btn {
+  border: none;
+  border-radius: 0;
+  background-color: #006eff;
+  font-weight: bold;
+}
+
+#btn:hover {
+  background-color: #2c87ff;
+}
+
+#btn:focus {
+  outline: none;
+}
